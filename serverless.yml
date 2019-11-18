@@ -1,0 +1,40 @@
+service: order-service
+
+provider:
+  name: aws
+  runtime: java8
+  region: us-east-1
+
+package:
+  artifact: build/distributions/order-0.1.zip
+
+functions:
+  createOrder:
+    handler: order.StreamLambdaHandler
+    iamRoleStatementsName: order-service-create-order-role
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - dynamodb:PutItem
+          - dynamodb:GetItem
+        Resource:
+          - arn:aws:dynamodb:us-east-1:*:*
+    events:
+      - http:
+          path: /v1/order
+          method: post
+
+
+resources:
+  Resources:
+    orders:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
