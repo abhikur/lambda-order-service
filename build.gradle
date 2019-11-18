@@ -40,6 +40,7 @@ dependencies {
     compile "org.modelmapper:modelmapper:2.3.4"
     compile "io.micronaut:micronaut-runtime"
     compile "io.micronaut.aws:micronaut-function-aws-api-proxy"
+    compile "com.amazonaws:aws-java-sdk-dynamodb:1.11.571"
     developmentOnly "io.micronaut:micronaut-http-server-netty"
     runtime "org.apache.logging.log4j:log4j-core:2.8.2"
     runtime "org.apache.logging.log4j:log4j-api:2.8.2"
