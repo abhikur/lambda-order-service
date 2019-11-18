@@ -31,9 +31,13 @@ configurations {
 dependencies {
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
+    annotationProcessor "org.projectlombok:lombok:1.18.8"
+
+    compileOnly "org.projectlombok:lombok:1.18.8"
     compile "io.micronaut:micronaut-http-client"
     compile "io.micronaut:micronaut-inject"
     compile "io.micronaut:micronaut-validation"
+    compile "org.modelmapper:modelmapper:2.3.4"
     compile "io.micronaut:micronaut-runtime"
     compile "io.micronaut.aws:micronaut-function-aws-api-proxy"
     developmentOnly "io.micronaut:micronaut-http-server-netty"
