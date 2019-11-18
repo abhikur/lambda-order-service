@@ -22,4 +22,7 @@ public class Item {
 
     @DynamoDBAttribute
     private String price;
+
+    @DynamoDBAttribute
+    private String quantity;
 }
