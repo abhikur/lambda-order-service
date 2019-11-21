@@ -9,7 +9,7 @@ provider:
   region: us-east-1
 
 package:
-  artifact: build/distributions/order-0.1.zip
+  artifact: build/libs/order-0.1.jar
 
 functions:
   create-order:

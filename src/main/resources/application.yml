@@ -1,3 +1,5 @@
 micronaut:
   application:
-    name: order
+    name: order-service
+  server:
+    port: 8082
