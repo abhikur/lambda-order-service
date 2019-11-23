@@ -3,6 +3,9 @@ service: order-service
 plugins:
   - serverless-iam-roles-per-function
 
+custom:
+  apiVersion: v1
+
 provider:
   name: aws
   runtime: java8
@@ -24,7 +27,7 @@ functions:
           - arn:aws:dynamodb:us-east-1:*:*
     events:
       - http:
-          path: /v1/order
+          path: /${self:custom.apiVersion}/{proxy+}
           method: post
 
 

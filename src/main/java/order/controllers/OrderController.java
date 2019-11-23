@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 
-@Controller("/v1")
+@Controller("/v1/order")
 public class OrderController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
@@ -22,7 +22,7 @@ public class OrderController {
     @Inject
     private Repository repository;
 
-    @Post("/order")
+    @Post
     public HttpResponse createOrder(@Body CreateOrderRequest orderRequest) {
         LOGGER.info("create order request received: {}", orderRequest);
         ModelMapper modelMapper = getModelMapper();
