@@ -28,7 +28,7 @@ functions:
     events:
       - http:
           path: /${self:custom.apiVersion}/{proxy+}
-          method: post
+          method: any
 
 
 resources:
