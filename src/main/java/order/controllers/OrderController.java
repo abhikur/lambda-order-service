@@ -1,9 +1,7 @@
 package order.controllers;
 
 import io.micronaut.http.HttpResponse;
-import io.micronaut.http.annotation.Body;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Post;
+import io.micronaut.http.annotation.*;
 import order.models.Order;
 import order.repository.Repository;
 import order.requests.CreateOrderRequest;
@@ -26,9 +24,18 @@ public class OrderController {
     public HttpResponse createOrder(@Body CreateOrderRequest orderRequest) {
         LOGGER.info("create order request received: {}", orderRequest);
         ModelMapper modelMapper = getModelMapper();
+
         Order order = modelMapper.map(orderRequest, Order.class);
         repository.save(order);
         return HttpResponse.created(order);
+    }
+
+    @Get(value = "/{orderId}")
+    public HttpResponse getOrder(@PathVariable String orderId) {
+        LOGGER.info("Getting order for id: {}", orderId);
+
+        Order order = repository.get(orderId);
+        return HttpResponse.ok(order);
     }
 
     private ModelMapper getModelMapper() {
